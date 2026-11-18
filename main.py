@@ -14,6 +14,13 @@ import os
 import sys
 import zlib
 
+# Ensure this script's own directory is importable regardless of the current
+# working directory and even under the -P (PYTHONSAFEPATH) flag, which does
+# not add the script directory to sys.path.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
 from fntdata import DATA_B64
 
 W = 1024
